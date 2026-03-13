@@ -46,6 +46,11 @@ public class StockManager
      */
     public Product findProduct(int id)
     {
+        for(Product stock: stockList){
+            if(stock.getID() == id){
+                return stock;
+            }
+        }
         return null;
     }
     
@@ -58,6 +63,10 @@ public class StockManager
      */
     public int numberInStock(int id)
     {
+        Product stock = findProduct(id);
+        if(stock != null){
+            return stock.getQuantity();
+        }
         return 0;
     }
 
@@ -66,5 +75,6 @@ public class StockManager
      */
     public void printProductDetails()
     {
+        System.out.println(stockList.toString());
     }
 }
